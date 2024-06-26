@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class App {
     /**
  * TODO:
@@ -94,6 +97,8 @@ public class App {
         elencoTelefonico();
         System.out.println("---------------------------");
         prenotazioni();
+        System.out.println("---------------------------");
+        elezioni();
     }
 
     public static void Studente() {
@@ -182,4 +187,27 @@ public class App {
         System.out.println(p.toString());
     }
 
+    public static void elezioni(){
+        
+        GestioneElezioni ge = new GestioneElezioni();
+
+        ge.aggiungiCandidato(new Candidato("Stronzo1"));
+        ge.aggiungiCandidato(new Candidato("stronzo2"));
+
+        ge.aggiungiElettore(new Elettore("Luca"));
+        ge.aggiungiElettore(new Elettore("Mario"));
+
+        try {
+            ge.vota("Luca", "Stronzo1");
+            ge.vota("Mario", "Stronzo1");
+            ge.vota("Mario", "Stronzo1");
+
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(ge.getRisultati());
+
+        
+    }
 }
