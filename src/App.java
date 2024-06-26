@@ -99,6 +99,8 @@ public class App {
         prenotazioni();
         System.out.println("---------------------------");
         elezioni();
+        System.out.println("---------------------------");
+        prenotazioniHotel();
     }
 
     public static void Studente() {
@@ -191,23 +193,45 @@ public class App {
         
         GestioneElezioni ge = new GestioneElezioni();
 
-        ge.aggiungiCandidato(new Candidato("Stronzo1"));
-        ge.aggiungiCandidato(new Candidato("stronzo2"));
+        try{
+            ge.aggiungiCandidato(new Candidato("Stronzo1"));
+            ge.aggiungiCandidato(new Candidato("stronzo2"));
 
-        ge.aggiungiElettore(new Elettore("Luca"));
-        ge.aggiungiElettore(new Elettore("Mario"));
+            ge.aggiungiElettore(new Elettore("Luca"));
+            ge.aggiungiElettore(new Elettore("Mario"));
 
-        try {
-            ge.vota("Luca", "Stronzo1");
-            ge.vota("Mario", "Stronzo1");
-            ge.vota("Mario", "Stronzo1");
-
-        } catch (IllegalStateException e) {
+        }catch(IllegalStateException e){
             System.out.println(e.getMessage());
         }
+        
+        ge.vota("Luca", "Stronzo1");
+        ge.vota("Mario", "Stronzo1");
 
         System.out.println(ge.getRisultati());
 
-        
+    }
+    
+    public static void prenotazioniHotel(){
+        GestionePrenotazioniHotel gph = new GestionePrenotazioniHotel();
+
+        Camera c1 = new Camera(101, true);
+        Camera c2 = new Camera(102, true);
+        Camera c3 = new Camera(103, true);
+        gph.aggiungiCamera(c1);
+        gph.aggiungiCamera(c2);
+        gph.aggiungiCamera(c3);
+
+        Cliente cl1 = new Cliente("Mario", "Rossi");
+        Cliente cl2 = new Cliente("Luca", "Bianchi");
+
+        gph.prenota(cl1,c3);
+        gph.prenota(cl2, c1);
+        System.out.println(gph.toString());
+
+        gph.modificaPrenotazione(cl2, c2);
+        System.out.println(gph.toString());
+
+        gph.cancellaPrenotazione(cl1);
+        System.out.println(gph.toString());
     }
 }
