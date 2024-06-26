@@ -18,7 +18,7 @@ public class PrenotazioniHotel {
 
     @Override
     public String toString() {
-        return "PrenotazioniHotel [cliente=" + cliente + ", camera=" + camera + "]";
+        return "Prenotazioni [cliente=" + cliente + ", camera=" + camera + "]";
     }
 
     

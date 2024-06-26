@@ -101,6 +101,8 @@ public class App {
         elezioni();
         System.out.println("---------------------------");
         prenotazioniHotel();
+        System.out.println("---------------------------");
+        impiegatoManager();
     }
 
     public static void Studente() {
@@ -233,5 +235,16 @@ public class App {
 
         gph.cancellaPrenotazione(cl1);
         System.out.println(gph.toString());
+    }
+
+    public static void impiegatoManager(){
+        Impiegato i1 = new Impiegato("Mario", 500);
+        Impiegato i2 = new Impiegato("Luca", 2000);
+        Impiegato i3 = new Manager("Mario", 5000, 500);
+
+        System.out.println(i1.aumentaSalario(15));
+        System.out.println(i2.aumentaSalario(20));
+        System.out.println(i3.aumentaSalario(15));
+
     }
 }
