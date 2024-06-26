@@ -43,6 +43,47 @@ public class App {
  * contatti. Gestisci eventuali eccezioni relative all'inserimento di numeri di
  * telefono non validi.
  * 
+ * POMERIGGIO
+ * 
+ * ---------------------------------------------------------------------------
+ * 
+ * ES5: Sistema di Votazione
+ * 
+ * Crea classi per Candidato e Elettore, dove ogni Elettore può votare per un
+ * Candidato. Implementa un meccanismo usando mappe per tenere traccia dei voti
+ * ricevuti da ogni candidato. Assicurati di gestire le eccezioni per casi come
+ * doppi voti o voti a candidati non esistenti.
+ * 
+ * ---------------------------------------------------------------------------
+ * 
+ * ES6: Sistema di Prenotazione Hotel
+ * 
+ * Definisci classi per Camera, Cliente, e Prenotazione. Utilizza una mappa per
+ * associare clienti a prenotazioni e una lista di camere disponibili.
+ * Implementa metodi per effettuare, modificare e cancellare prenotazioni,
+ * assicurandoti di gestire eccezioni come camere non disponibili o
+ * cancellazioni tardive.
+ * 
+ * ---------------------------------------------------------------------------
+ * 
+ * ES7: Impiegato e Manager
+ * 
+ * Crea una classe Impiegato con attributi come nome, salario e metodi per
+ * aumentaSalario(int percentuale). Deriva da questa una classe Manager che
+ * aggiunge l'attributo bonus. Il metodo aumentaSalario del manager dovrebbe
+ * considerare anche il bonus nell'aumento. Mostra come puoi utilizzare il
+ * polimorfismo per gestire diversi tipi di impiegati in un array di tipo
+ * Impiegato.
+ * 
+ * ---------------------------------------------------------------------------
+ * 
+ * ES8: Sistema di Prenotazione Alberghiera
+ * 
+ * Progetta una classe astratta CameraAlbergo con metodi come calcolaCosto() e
+ * numeroLetti(). Deriva da questa diverse classi specifiche come CameraSingola,
+ * CameraDoppia e Suite. Implementa calcolaCosto in modo diverso per ogni tipo
+ * di camera. Utilizza una collezione per gestire tutte le camere disponibili in
+ * un albergo.
  */
     public static void main(String[] args) throws Exception {
 
@@ -116,11 +157,28 @@ public class App {
     public static void prenotazioni(){
          Prenotazione p = new Prenotazione();
 
-        System.out.println(p.prenota(1)); 
-        System.out.println(p.prenota(5));
+        try {
+            System.out.println(p.prenota(1)); 
+            System.out.println(p.prenota(5));
+        } catch (IllegalArgumentException e) {
 
-        System.out.println(p.annullaPrenotazione(1));
-        System.out.println("Disponibilità: "+p.isDisponibile(15));
+           System.out.println(e.getMessage());
+        }
+       
+        try {
+            System.out.println(p.annullaPrenotazione(1));
+        } catch (IllegalArgumentException e) {
+
+            System.out.println(e.getMessage());
+        }
+        
+
+        try {
+            System.out.println("Disponibilità: "+p.isDisponibile(15));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        
         System.out.println(p.toString());
     }
 
