@@ -27,9 +27,9 @@ public class ElencoTelefonico{
         contatti.remove(c);
     }
 
-    public Contatto cercaContatti(String nome){
+    public Contatto cercaContatti(String data){
         for(Contatto c : contatti){
-            if(c.getNome().equals(nome)){
+            if(c.getNome().toLowerCase().contains(data)||c.getNumero().contains(data)){
                 return c;
             }
         }

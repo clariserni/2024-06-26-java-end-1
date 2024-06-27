@@ -1,6 +1,7 @@
 public class Elettore {
 
     private String nome;
+    private int voti;
 
     public Elettore(String nome) {
         this.nome = nome;
@@ -14,6 +15,8 @@ public class Elettore {
         this.nome = nome;
     }
 
+    
+
     public void vota() {
         boolean voto = false;
         if (voto) {
@@ -25,6 +28,14 @@ public class Elettore {
     @Override
     public String toString() {
         return "Elettore [nome=" + nome + "]";
+    }
+
+    public int getVoti() {
+        return voti;
+    }
+
+    public void setVoti(int voti) {
+        this.voti = voti;
     }
 
     

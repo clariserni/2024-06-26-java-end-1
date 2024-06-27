@@ -195,22 +195,35 @@ public class App {
         
         GestioneElezioni ge = new GestioneElezioni();
 
-        try{
-            ge.aggiungiCandidato(new Candidato("Stronzo1"));
-            ge.aggiungiCandidato(new Candidato("stronzo2"));
+        try {
+            
+            System.out.println(ge);
 
-            ge.aggiungiElettore(new Elettore("Luca"));
-            ge.aggiungiElettore(new Elettore("Mario"));
+            Candidato c1 = new Candidato("mARIO");
+            Candidato c2 = new Candidato("Luca");
 
-        }catch(IllegalStateException e){
+            Elettore e1 = new Elettore("Alberto");
+            Elettore e2 = new Elettore("Laura");
+            Elettore e3 = new Elettore("Carla");
+            
+
+            System.out.println(ge);
+            System.out.println("-------------------------------------------------------------------");
+            ge.vota(e1, c2);
+            System.out.println(ge);
+            System.out.println("-------------------------------------------------------------------");
+            ge.vota(e2, c2);
+            System.out.println(ge);
+            System.out.println("-------------------------------------------------------------------");
+            ge.vota(e3, c1);
+            System.out.println(ge);
+            System.out.println("-------------------------------------------------------------------");
+           
+
+            System.out.println("Eletto: " + ge.getEletto());
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
-        ge.vota("Luca", "Stronzo1");
-        ge.vota("Mario", "Stronzo1");
-
-        System.out.println(ge.getRisultati());
-
     }
     
     public static void prenotazioniHotel(){
